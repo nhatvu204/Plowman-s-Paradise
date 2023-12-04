@@ -14,20 +14,40 @@ public class PlayerController : MonoBehaviour
     public float walkSpeed = 4f;
     public float runSpeed = 8f;
 
+    //Player interaction component
+    PlayerInteraction playerInteraction;
+
 
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
+
+        //Get interaction component
+        playerInteraction = GetComponentInChildren<PlayerInteraction>();
     }
 
     // Update is called once per frame
     void Update()
     {
         Move();
+
+        Interact();
     }
 
+    //Handles interaction, send input to player interaction
+    public void Interact()
+    {
+        //Tool interaction
+        if (Input.GetButtonDown("Fire1"))
+        {
+            //Interact
+            playerInteraction.Interact();
+        }
+    }
+
+    //Handles movement
     public void Move()
     {
         float horizontal = Input.GetAxis("Horizontal");

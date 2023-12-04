@@ -14,6 +14,9 @@ public class Land : MonoBehaviour
     public Material soilMat, farmlandMat, wateredMat;
     new Renderer renderer;
 
+    //The selection gameobject to enable when the player selects the land
+    public GameObject select;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +24,9 @@ public class Land : MonoBehaviour
 
         //Default land status
         SwitchLandStatus(LandStatus.Soil);
+
+        //Deselect the land by default
+        Select(false);
     }
 
     // Update is called once per frame
@@ -47,5 +53,17 @@ public class Land : MonoBehaviour
         }
 
         renderer.material = materialToSwitch;
+    }
+
+    public void Select(bool toggle)
+    {
+        select.SetActive(toggle);
+    }
+
+    //When player press Interact button while selecting the land
+    public void Interact()
+    {
+        //Interaction
+        SwitchLandStatus(LandStatus.Farmland);
     }
 }
