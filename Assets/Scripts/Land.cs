@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Land : MonoBehaviour
+public class Land : MonoBehaviour, ITimeTracker
 {
     public enum LandStatus
     {
@@ -16,6 +16,9 @@ public class Land : MonoBehaviour
 
     //The selection gameobject to enable when the player selects the land
     public GameObject select;
+
+    //Cache the time the land was watered
+    GameTimestamp timeWatered;
 
     // Start is called before the first frame update
     void Start()
@@ -49,6 +52,9 @@ public class Land : MonoBehaviour
                 break;
             case LandStatus.Watered: 
                 materialToSwitch = wateredMat;
+
+                //Cache the time it was watered
+                timeWatered = TimeManager.Instance.GetGameTimestamp();
                 break;
         }
 
@@ -84,6 +90,17 @@ public class Land : MonoBehaviour
                     SwitchLandStatus(LandStatus.Watered); 
                     break;
             }
+        }
+    }
+
+    public void ClockUpdate(GameTimestamp timestamp)
+    {
+        //Check if 24h is passed since last watered
+        if (landStatus == LandStatus.Watered)
+        {
+            //Hours since last watered
+            int hoursElapsed = GameTimestamp.CompareTimestamp(timeWatered, timestamp);
+            Debug.Log(hoursElapsed);
         }
     }
 }
