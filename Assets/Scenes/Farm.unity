@@ -722,7 +722,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2c9c90d38131a045a22da4d391eba96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offsetZ: 8
+  offsetZ: 6
   smoothing: 5
 --- !u!1001 &285720325
 PrefabInstance:
@@ -3411,8 +3411,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -103.06998, y: -24.936}
-  m_SizeDelta: {x: 206.806, y: 49.872}
+  m_AnchoredPosition: {x: -90.963, y: -24.936}
+  m_SizeDelta: {x: 182.593, y: 49.872}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1657862066
 MonoBehaviour:
@@ -3436,7 +3436,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 20
+    m_FontSize: 24
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -4608,7 +4608,6 @@ GameObject:
   - component: {fileID: 1924657699}
   - component: {fileID: 1924657698}
   - component: {fileID: 1924657700}
-  - component: {fileID: 1924657701}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -4677,8 +4676,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toolEquipSlot: {fileID: 1718557244}
-  timeText: {fileID: 2031469564}
-  dateText: {fileID: 1657862066}
   inventoryPanel: {fileID: 1220548833}
   toolHandSlot: {fileID: 1696959449}
   toolSlots:
@@ -4702,26 +4699,6 @@ MonoBehaviour:
   - {fileID: 74875961}
   itemNameText: {fileID: 1173811212}
   itemDescriptionText: {fileID: 757691915}
---- !u!114 &1924657701
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1924657697}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1be2c325d297f3649b49f557d02fe683, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timestamp:
-    year: 0
-    season: 0
-    day: 0
-    hour: 0
-    minute: 0
-  timeScale: 1
-  sunTransform: {fileID: 234848363}
 --- !u!1001 &1953971590
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4823,8 +4800,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -103.23, y: 39.063976}
-  m_SizeDelta: {x: 206.48, y: 78.128}
+  m_AnchoredPosition: {x: -91.125, y: 39.063976}
+  m_SizeDelta: {x: 182.27, y: 78.128}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2031469564
 MonoBehaviour:
