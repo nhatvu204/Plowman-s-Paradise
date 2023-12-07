@@ -17,4 +17,3 @@ MonoBehaviour:
   gameModel: {fileID: 0}
   daysToGrow: 3
   cropToYield: {fileID: 11400000, guid: e8bf9a2cbb336d541aa472459a0d6384, type: 2}
-  seedling: {fileID: 1000013410243764, guid: ab77a6e7750ba1d47bf893be4e5b7433, type: 3}
