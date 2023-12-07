@@ -3180,16 +3180,8 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1354990166}
     m_Modifications:
-    - target: {fileID: 1381694136982580972, guid: 145d2193e46ecb341ac42080a2aa8161, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6164345529484915759, guid: 145d2193e46ecb341ac42080a2aa8161, type: 3}
       propertyPath: m_Name
-      value: Land
-      objectReference: {fileID: 0}
-    - target: {fileID: 6164345529484915759, guid: 145d2193e46ecb341ac42080a2aa8161, type: 3}
-      propertyPath: m_TagString
       value: Land
       objectReference: {fileID: 0}
     - target: {fileID: 8685075081185443519, guid: 145d2193e46ecb341ac42080a2aa8161, type: 3}

@@ -9,4 +9,7 @@ public class SeedData : ItemData
 
     //The crop the seed will yield
     public ItemData cropToYield;
+
+    //Seedling GameObject
+    public GameObject seedling;
 }
