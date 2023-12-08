@@ -39,7 +39,7 @@ public class GameTimestamp
         this.minute = minute;
     }
 
-    //Creatiing a new instance of a GameTimestamp from another pre-existing one
+    //Creating a new instance of a GameTimestamp from another pre-existing one
     public GameTimestamp(GameTimestamp timestamp)
     {
         this.year = timestamp.year;
@@ -102,11 +102,6 @@ public class GameTimestamp
         return hours * 60;
     }
 
-    public static int DayToHour(int days)
-    {
-        return days * 24;
-    }
-
     public static int SeasonsToDays(Seasons season)
     {
         int seasonIndex = (int)season;
@@ -127,8 +122,8 @@ public class GameTimestamp
     public static int CompareTimestamps(GameTimestamp timestamp1, GameTimestamp timestamp2)
     {
         //Convert to hours
-        int timestamp1InHours = DaysToHours(YearsToDays(timestamp1.year)) + DaysToHours(SeasonsToDays(timestamp1.season)) + DaysToHours(timestamp1.day) + timestamp1.day;
-        int timestamp2InHours = DaysToHours(YearsToDays(timestamp2.year)) + DaysToHours(SeasonsToDays(timestamp2.season)) + DaysToHours(timestamp2.day) + timestamp2.day;
+        int timestamp1InHours = DaysToHours(YearsToDays(timestamp1.year)) + DaysToHours(SeasonsToDays(timestamp1.season)) + DaysToHours(timestamp1.day) + timestamp1.hour;
+        int timestamp2InHours = DaysToHours(YearsToDays(timestamp2.year)) + DaysToHours(SeasonsToDays(timestamp2.season)) + DaysToHours(timestamp2.day) + timestamp2.hour;
 
         int difference = timestamp2InHours - timestamp1InHours;
 
