@@ -32,6 +32,9 @@ public class InventoryManager : MonoBehaviour
     //Item in hand
     public ItemData equippedItem = null;
 
+    //The transform for the player to hold item in the scene
+    public Transform handPoint;
+
     //Equipping
 
     //Handles movement of item from Inventory to Hand
@@ -47,6 +50,9 @@ public class InventoryManager : MonoBehaviour
 
             //Change the Hand's Slot to the Inventory Slot's
             equippedItem = itemToEquip;
+
+            //Update the changes in the scene
+            RenderHand();
         }
         else
         {
@@ -62,6 +68,22 @@ public class InventoryManager : MonoBehaviour
 
         //Update the channges to the UI
         UIManager.Instance.RenderInventory();
+    }
+
+    //Render equipped item in the scene
+    public void RenderHand()
+    {
+        //Reset objects in hand
+        if(handPoint.childCount > 0)
+        {
+            Destroy(handPoint.GetChild(0).gameObject);
+        }
+
+        //Check if anything equipped
+        if (equippedItem != null)
+        {
+            Instantiate(equippedItem.gameModel, handPoint);
+        }
     }
 
     //Handles movement of item from Hand to Inventory
@@ -82,6 +104,9 @@ public class InventoryManager : MonoBehaviour
                     break;
                 }
             }
+
+            //Update the changes in the scene
+            RenderHand();
         }
         else
         {

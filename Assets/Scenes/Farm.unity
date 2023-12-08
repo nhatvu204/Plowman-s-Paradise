@@ -618,7 +618,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!4 &188943465 stripped
 Transform:
@@ -2250,7 +2250,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 909976414}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.35349566, y: 0, z: -6.93}
+  m_LocalPosition: {x: -0.35349566, y: -0.01, z: -6.93}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2840,7 +2840,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1354990166}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: FarmingArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2854,7 +2854,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1354990165}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.811228, y: 1.0104024, z: 0.9668096}
+  m_LocalPosition: {x: -3.811228, y: 1.159, z: 0.9668096}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3360,6 +3360,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1da53054af6118b4db3500573618a18d, type: 3}
+--- !u!4 &1589786470 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3324464214303963801, guid: 86c3e082da344be41a7af729cba3bf1c, type: 3}
+  m_PrefabInstance: {fileID: 8635965151686765796}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1613013153 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2127750129855727827, guid: 1da53054af6118b4db3500573618a18d, type: 3}
@@ -4648,6 +4653,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   equippedItem: {fileID: 0}
+  handPoint: {fileID: 1589786470}
 --- !u!4 &1924657699
 Transform:
   m_ObjectHideFlags: 0
@@ -5173,7 +5179,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3012543946928797047, guid: 86c3e082da344be41a7af729cba3bf1c, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3012543946928797047, guid: 86c3e082da344be41a7af729cba3bf1c, type: 3}
       propertyPath: m_LocalPosition.x

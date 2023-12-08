@@ -9,6 +9,9 @@ public class PlayerInteraction : MonoBehaviour
     //The land the player currently selecting
     Land selectedLand = null;
 
+    //The interactable object the player is selecting
+    InteractableObject selectedInteractable = null;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +45,20 @@ public class PlayerInteraction : MonoBehaviour
             return;
         }
 
+        //Check if the player is going to interact with an Item
+        if(other.tag == "Item")
+        {
+            //Set the interactable to the currently selected interactable
+            selectedInteractable = other.GetComponent<InteractableObject>();
+            return;
+        }
+
+        //Deselect the interactable 
+        if(selectedInteractable != null)
+        {
+            selectedInteractable = null; 
+        }
+
         //Unselect the land when the player walk off
         if(selectedLand != null)
         {
@@ -65,6 +82,13 @@ public class PlayerInteraction : MonoBehaviour
 
     public void Interact()
     {
+        //Can't use a tool when an Item in hand
+        if(InventoryManager.Instance.equippedItem != null)
+        {
+
+            return;
+        }
+
         //Check if the player on a farmable land
         if (selectedLand != null)
         {
@@ -72,5 +96,28 @@ public class PlayerInteraction : MonoBehaviour
             return;
         }
         Debug.Log("Not on any land");
+    }
+
+    //Triggered on pressing the item interact button
+    public void ItemInteract()
+    {
+        //If the player is holding something, keep it in his inventory
+        if (InventoryManager.Instance.equippedItem != null)
+        {
+            InventoryManager.Instance.HandToInventory(InvetorySlot.InventoryType.Item);
+            return;
+        }
+
+        //If the player isn't holding anything, pick up an item
+
+        //Check if there is an interactable selected
+        if(selectedInteractable != null)
+        {
+            //Pick up
+            selectedInteractable.PickUp();
+
+            Debug.Log("PickUp works");
+        }
+
     }
 }

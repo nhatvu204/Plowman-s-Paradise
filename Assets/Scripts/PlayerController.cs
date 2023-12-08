@@ -45,6 +45,13 @@ public class PlayerController : MonoBehaviour
             //Interact
             playerInteraction.Interact();
         }
+
+        //Item interaction
+        if (Input.GetButtonDown("Fire2"))
+        {
+            //Interact
+            playerInteraction.ItemInteract();
+        }
     }
 
     //Handles movement

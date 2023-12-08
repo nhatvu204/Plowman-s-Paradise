@@ -199,3 +199,4 @@ MonoBehaviour:
   farmlandMat: {fileID: 2100000, guid: 4a93ac8636fdfa04387c3e68d8748782, type: 2}
   wateredMat: {fileID: 2100000, guid: 8be611787d9fc474ba3eea212ad4f438, type: 2}
   select: {fileID: 1381694136982580972}
+  cropPrefab: {fileID: 6211583376542619794, guid: 00dfa6240732cd84083a53aeb05be07d, type: 3}

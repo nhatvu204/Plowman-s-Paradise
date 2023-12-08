@@ -20,6 +20,13 @@ public class Land : MonoBehaviour, ITimeTracker
     //Cache the time the land was watered
     GameTimestamp timeWatered;
 
+    [Header("Crops")]
+    //Crop prefab to instantiate
+    public GameObject cropPrefab;
+
+    //Crop currently planted on the land
+    CropBehavior cropPlanted = null;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,6 +62,9 @@ public class Land : MonoBehaviour, ITimeTracker
                 break;
             case LandStatus.Watered: 
                 materialToSwitch = wateredMat;
+
+                //Cache the time it was watered
+                timeWatered = TimeManager.Instance.GetGameTimestamp();
                 break;
         }
 
@@ -72,6 +82,12 @@ public class Land : MonoBehaviour, ITimeTracker
         //Check player's tool slot
         ItemData toolSlot = InventoryManager.Instance.equippedTool;
 
+        //If there's nothing equipped, return
+        if (toolSlot == null)
+        {
+            return;
+        }
+
         //Try casting the itemdata in the toolslot as EquipmentData
         EquipmentData equipmentTool = toolSlot as EquipmentData;
 
@@ -88,11 +104,27 @@ public class Land : MonoBehaviour, ITimeTracker
                     break;
                 case EquipmentData.ToolType.WateringCan:
                     SwitchLandStatus(LandStatus.Watered); 
-
-                    //Cache the time it was watered
-                    timeWatered = TimeManager.Instance.GetGameTimestamp();
                     break;
             }
+
+            return;
+        }
+
+        //Try casting the itemData in the toolSlot as SeedData
+        SeedData seedTool = toolSlot as SeedData;
+
+        //Conditions to be able to plant a seed
+        if (seedTool != null && landStatus != LandStatus.Soil && cropPlanted == null)
+        {
+            //Instantiate the crop object parented to the land
+            GameObject cropObject = Instantiate(cropPrefab, transform);
+            //Move the crop object to the top of the land
+            cropObject.transform.position = new Vector3(transform.position.x, 0.02f, transform.position.z);
+
+            //Access the crop behavior of the crop going to be planted
+            cropPlanted = cropObject.GetComponent<CropBehavior>();
+            //Plant
+            cropPlanted.Plant(seedTool);
         }
     }
 
@@ -103,6 +135,12 @@ public class Land : MonoBehaviour, ITimeTracker
         {
             int hourElapsed = GameTimestamp.CompareTimestamps(timeWatered, timestamp);
             Debug.Log(hourElapsed);
+
+            //Grow the planted crop
+            if (cropPlanted != null)
+            {
+                cropPlanted.Grow();
+            }
 
             if (hourElapsed > 24)
             {
