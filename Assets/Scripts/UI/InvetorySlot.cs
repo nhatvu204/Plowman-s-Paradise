@@ -8,8 +8,10 @@ using UnityEngine.UI;
 public class InvetorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     ItemData itemToDisplay;
+    int quantity;
 
     public Image itemDisplayImage;
+    public Text quantityText;
 
     public enum InventoryType
     {
@@ -20,13 +22,24 @@ public class InvetorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     int slotIndex;
 
-    public void Display(ItemData itemToDisplay)
+    public void Display(ItemSlotData itemSlot)
     {
+        itemToDisplay = itemSlot.itemData;
+        quantity = itemSlot.quantity;
+
+        //Quantity text doesn't display by default
+        quantityText.text = "";
+
         //Check if there is an item to display 
         if (itemToDisplay != null)
         {
             itemDisplayImage.sprite = itemToDisplay.thumbnail;
-            this.itemToDisplay = itemToDisplay;
+
+            //Display stack quantity if more than 1
+            if(quantity > 1)
+            {
+                quantityText.text = quantity.ToString();
+            }
 
             itemDisplayImage.gameObject.SetActive(true);
             return;
