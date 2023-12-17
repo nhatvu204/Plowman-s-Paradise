@@ -31,6 +31,10 @@ public class UIManager : MonoBehaviour, ITimeTracker
     public Text itemNameText;
     public Text itemDescriptionText;
 
+    [Header("Screen Transition")]
+    public GameObject fadeIn;
+    public GameObject fadeOut;
+
     private void Awake()
     {
         //If there is more than 1 instance, destroy the extra
@@ -53,6 +57,18 @@ public class UIManager : MonoBehaviour, ITimeTracker
         //Add UIManager to the list of objects TimeManager will notify when the time updates
         TimeManager.Instance.RegisterTracker(this);
     }
+
+    #region FadeIn and FadeOut Transition
+    public void OnFadeInComplete()
+    {
+        
+    }
+
+    public void OnFadeOutComplete()
+    {
+
+    }
+    #endregion
 
     //Iterate through the slot UI elements and assign it its reference slot index
     public void AssignSlotIndexes()
