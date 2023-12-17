@@ -12945,7 +12945,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 753441487}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.81, y: 0.462, z: 11.623}
+  m_LocalPosition: {x: 5.81, y: 0, z: 11.623}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -23303,6 +23303,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1354990166}
+  - component: {fileID: 1354990167}
   m_Layer: 0
   m_Name: FarmingArea
   m_TagString: Untagged
@@ -23901,6 +23902,18 @@ Transform:
   m_Father: {fileID: 1449914612}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1354990167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1354990165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f8c7514f78a1cd4ab42b4d4f6cdbc60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1358912386
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -38848,7 +38861,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2100527893}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.85, y: 1, z: -21.76}
+  m_LocalPosition: {x: -10.85, y: 0, z: -21.76}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -2242,6 +2242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 621878e4e48abf246a71a715fe31a1e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemIndex: {fileID: 11400000, guid: a08d3a2d6dfab9a418e77545bfdb2c7c, type: 2}
   toolSlots:
   - itemData: {fileID: 11400000, guid: e5dd24147a2ad934ca38bb9dd982681c, type: 2}
     quantity: 1
