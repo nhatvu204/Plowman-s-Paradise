@@ -35,6 +35,9 @@ public class UIManager : MonoBehaviour, ITimeTracker
     public GameObject fadeIn;
     public GameObject fadeOut;
 
+    [Header("Yes No Prompt")]
+    public YesNoPrompt yesNoPrompt;
+
     private void Awake()
     {
         //If there is more than 1 instance, destroy the extra
@@ -58,6 +61,14 @@ public class UIManager : MonoBehaviour, ITimeTracker
         TimeManager.Instance.RegisterTracker(this);
     }
 
+    public void TriggerYesNoPrompt(string message, System.Action onYesCallback)
+    {
+        //Set active yes no prompt
+        yesNoPrompt.gameObject.SetActive(true);
+
+        yesNoPrompt.CreatePrompt(message, onYesCallback);
+    } 
+
     #region FadeIn and FadeOut Transition
     public void OnFadeInComplete()
     {
@@ -70,6 +81,7 @@ public class UIManager : MonoBehaviour, ITimeTracker
     }
     #endregion
 
+    #region Inventory
     //Iterate through the slot UI elements and assign it its reference slot index
     public void AssignSlotIndexes()
     {
@@ -154,7 +166,9 @@ public class UIManager : MonoBehaviour, ITimeTracker
         itemNameText.text = data.name;
         itemDescriptionText.text = data.description;
     }
+    #endregion
 
+    #region Time
     //Callback to handle the UI for time
     public void ClockUpdate(GameTimestamp timestamp)
     {
@@ -181,4 +195,7 @@ public class UIManager : MonoBehaviour, ITimeTracker
         //Format
         dateText.text = season + " " + day + " (" + dayOfTheWeek + ")";
     }
+    #endregion
+
+
 }

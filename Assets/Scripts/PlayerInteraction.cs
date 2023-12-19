@@ -95,7 +95,6 @@ public class PlayerInteraction : MonoBehaviour
             selectedLand.Interact();
             return;
         }
-        Debug.Log("Not on any land");
     }
 
     //Triggered on pressing the item interact button
@@ -116,7 +115,7 @@ public class PlayerInteraction : MonoBehaviour
             //Pick up
             selectedInteractable.PickUp();
 
-            Debug.Log("PickUp works");
+            //Debug.Log("PickUp works");
         }
 
     }

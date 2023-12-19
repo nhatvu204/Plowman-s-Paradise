@@ -33,6 +33,12 @@ public class TimeManager : MonoBehaviour
         }
     }
 
+    //Load time from a save
+    public void LoadTime(GameTimestamp timestamp)
+    {
+        this.timestamp = new GameTimestamp(timestamp);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -62,6 +68,22 @@ public class TimeManager : MonoBehaviour
         }
 
         UpdateSunMovement();
+    }
+
+    public void SkipTime(GameTimestamp timeToSkipTo)
+    {
+        //Convert to minutes
+        int timeToSkipInMinutes = GameTimestamp.TimestampInMinutes(timeToSkipTo);
+        int timeNowInMinutes = GameTimestamp.TimestampInMinutes(timestamp);
+        int differenceInMinutes = timeToSkipInMinutes - timeNowInMinutes;
+
+        //Check if the timestamp to skip to has been reached
+        if (differenceInMinutes <= 0) return;
+
+        for (int i = 0; i < differenceInMinutes; i++)
+        {
+            Tick();
+        }
     }
 
     //Day/Night cycle 

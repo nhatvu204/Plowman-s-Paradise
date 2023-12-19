@@ -42,8 +42,19 @@ public class InventoryManager : MonoBehaviour
     //The transform for the player to hold item in the scene
     public Transform handPoint;
 
-    //Equipping
+    //Load the inventory from a save
+    public void LoadInventory(ItemSlotData[] toolSlots, ItemSlotData equippedToolSlot, ItemSlotData[] itemSlots, ItemSlotData equippedItemSlot)
+    {
+        this.toolSlots = toolSlots;
+        this.itemSlots = itemSlots;
+        this.equippedItemSlot = equippedItemSlot;
+        this.equippedToolSlot = equippedToolSlot;
 
+        //Update in the UI
+        UIManager.Instance.RenderInventory();
+    }
+
+    //Equipping
     //Handles movement of item from Inventory to Hand
     public void InventoryToHand(int slotIndex, InvetorySlot.InventoryType inventoryType)
     {
