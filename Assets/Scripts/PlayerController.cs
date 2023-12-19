@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     public float walkSpeed = 4f;
     public float runSpeed = 8f;
 
+    private float gravity = 9.81f;
+
     //Player interaction component
     PlayerInteraction playerInteraction;
 
@@ -64,6 +66,12 @@ public class PlayerController : MonoBehaviour
         Vector3 dir = new Vector3(horizontal, 0f, vertical).normalized;
         Vector3 velocity = dir * moveSpeed * Time.deltaTime;
 
+        if (controller.isGrounded)
+        {
+            velocity.y = 0;
+        }
+        velocity.y -= Time.deltaTime * gravity;
+
         //Check sprint
         if (Input.GetButton("Sprint"))
         {
@@ -86,7 +94,7 @@ public class PlayerController : MonoBehaviour
             controller.Move(velocity);
         }
 
-        animator.SetFloat("Speed", velocity.magnitude);
+        animator.SetFloat("Speed", dir.magnitude);
 
     }
 }
