@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -15,8 +16,10 @@ public class SceneTransitionManager : MonoBehaviour
         PlayerHome,
         Town
     }
-
     public Location currentLocation;
+
+    //List of places indoor
+    static readonly Location[] indoor = { Location.PlayerHome };
 
     //Player's transform
     Transform playerPoint;
@@ -42,6 +45,12 @@ public class SceneTransitionManager : MonoBehaviour
 
         //Find player's transform
         playerPoint = FindObjectOfType<PlayerController>().transform;
+    }
+
+    //Check if the current location is indoors
+    public bool CurrentlyIndoor()
+    {
+        return indoor.Contains(currentLocation);
     }
 
     //Switch player to another scene
