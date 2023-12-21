@@ -23304,6 +23304,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1354990166}
   - component: {fileID: 1354990167}
+  - component: {fileID: 1354990168}
   m_Layer: 0
   m_Name: FarmingArea
   m_TagString: Untagged
@@ -23917,6 +23918,19 @@ MonoBehaviour:
   landPlots: []
   landData: []
   cropData: []
+--- !u!114 &1354990168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1354990165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 961c46c519b7ee74cbfb61092a6243db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  percentageFilled: 50
 --- !u!1001 &1358912386
 PrefabInstance:
   m_ObjectHideFlags: 0

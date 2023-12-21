@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(ObstacleGenerator))]
 public class LandManager : MonoBehaviour
 {
     public static LandManager Instance { get; private set; }
@@ -47,6 +48,11 @@ public class LandManager : MonoBehaviour
             ImportLandData(farmData.Item1);
             ImportCropData(farmData.Item2);
         }
+        else
+        {
+            //Generate obstacles in New Game (no farm data)
+            GetComponent<ObstacleGenerator>().GenerateObstacles(landPlots);
+        }
     }
 
     #region Register and Deregister
@@ -88,9 +94,9 @@ public class LandManager : MonoBehaviour
 
     #region State Changes
     //Update the corresponding Land Data on ever change to the Land's state
-    public void OnLandStateChange(int id, Land.LandStatus landStatus, GameTimestamp lastWatered)
+    public void OnLandStateChange(int id, Land.LandStatus landStatus, GameTimestamp lastWatered, Land.FarmObstacleStatus obstacleStatus)
     {
-        landData[id] = new LandSaveState(landStatus, lastWatered);
+        landData[id] = new LandSaveState(landStatus, lastWatered, obstacleStatus);
     }
 
     //Update the corresponding Crop Data on ever change to the Crop's state
@@ -114,7 +120,7 @@ public class LandManager : MonoBehaviour
             LandSaveState landDataToLoad = landDatasetToLoad[i];
 
             //Load it up into the land instance
-            landPlots[i].LoadLandData(landDataToLoad.landStatus, landDataToLoad.lastWatered);
+            landPlots[i].LoadLandData(landDataToLoad.landStatus, landDataToLoad.lastWatered, landDataToLoad.obstacleStatus);
         }
 
         landData = landDatasetToLoad;

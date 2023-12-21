@@ -15,4 +15,4 @@ MonoBehaviour:
   description: For clearing wood obstales
   thumbnail: {fileID: 339336531, guid: e9cec09ac9be7ab458afe186f6c1edb0, type: 3}
   gameModel: {fileID: 0}
-  toolType: 0
+  toolType: 2

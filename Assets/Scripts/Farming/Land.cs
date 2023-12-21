@@ -28,6 +28,21 @@ public class Land : MonoBehaviour, ITimeTracker
     //Crop currently planted on the land
     CropBehavior cropPlanted = null;
 
+    //Obstacles
+    public enum FarmObstacleStatus
+    {
+        None,
+        Rock,
+        Wood,
+        Weeds
+    }
+    [Header("Obstacles")]
+    public FarmObstacleStatus obstacleStatus;
+    public GameObject rockPrefab, woodPrefab, weedsPrefab;
+
+    //Store instantiated obstacle as a variable
+    GameObject obstacleObject;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,14 +58,14 @@ public class Land : MonoBehaviour, ITimeTracker
         TimeManager.Instance.RegisterTracker(this);
     }
 
-    public void LoadLandData(LandStatus statusToSwitch, GameTimestamp lastWatered)
+    public void LoadLandData(LandStatus LandStatusToSwitch, GameTimestamp lastWatered, FarmObstacleStatus obstacleStatusToSwitch)
     {
         //Set land status accordingly
-        landStatus = statusToSwitch;
+        landStatus = LandStatusToSwitch;
         timeWatered = lastWatered;
 
         Material materialToSwitch = soilMat;
-        switch (statusToSwitch)
+        switch (LandStatusToSwitch)
         {
             case LandStatus.Soil:
                 materialToSwitch = soilMat;
@@ -64,6 +79,32 @@ public class Land : MonoBehaviour, ITimeTracker
         }
 
         renderer.material = materialToSwitch;
+
+        switch (obstacleStatusToSwitch)
+        {
+            case FarmObstacleStatus.None:
+                //Destroy obstacleObj
+                if (obstacleObject != null) Destroy(obstacleObject);
+                break;
+            case FarmObstacleStatus.Rock:
+                //Instatiate the prefab on land and assign to obstacleObj
+                obstacleObject = Instantiate(rockPrefab, transform);
+                break;
+            case FarmObstacleStatus.Wood:
+                //Instatiate the prefab on land and assign to obstacleObj
+                obstacleObject = Instantiate(woodPrefab, transform);
+                break;
+            case FarmObstacleStatus.Weeds:
+                //Instatiate the prefab on land and assign to obstacleObj
+                obstacleObject = Instantiate(weedsPrefab, transform);
+                break;
+        }
+
+        //Move the obstacle object to the top of the land
+        if (obstacleObject != null) obstacleObject.transform.position = new Vector3(transform.position.x, 0.02f, transform.position.z);
+
+        //Set the status accordingly
+        obstacleStatus = obstacleStatusToSwitch;
     }
 
     // Update is called once per frame
@@ -94,7 +135,38 @@ public class Land : MonoBehaviour, ITimeTracker
 
         renderer.material = materialToSwitch;
 
-        LandManager.Instance.OnLandStateChange(id, landStatus, timeWatered);
+        LandManager.Instance.OnLandStateChange(id, landStatus, timeWatered, obstacleStatus);
+    }
+
+    public void SetObstacleStatus(FarmObstacleStatus statusToSwitch)
+    {
+        switch (statusToSwitch)
+        {
+            case FarmObstacleStatus.None:
+                //Destroy obstacleObj
+                if (obstacleObject != null) Destroy(obstacleObject);
+                break;
+            case FarmObstacleStatus.Rock:
+                //Instatiate the prefab on land and assign to obstacleObj
+                obstacleObject = Instantiate(rockPrefab, transform);
+                break;
+            case FarmObstacleStatus.Wood:
+                //Instatiate the prefab on land and assign to obstacleObj
+                obstacleObject = Instantiate(woodPrefab, transform);
+                break;
+            case FarmObstacleStatus.Weeds:
+                //Instatiate the prefab on land and assign to obstacleObj
+                obstacleObject = Instantiate(weedsPrefab, transform);
+                break;
+        }
+
+        //Move the obstacle object to the top of the land
+        if(obstacleObject != null) obstacleObject.transform.position = new Vector3(transform.position.x, 0.02f, transform.position.z);
+
+        //Set the status accordingly
+        obstacleStatus = statusToSwitch;
+
+        LandManager.Instance.OnLandStateChange(id, landStatus, timeWatered, obstacleStatus);
     }
 
     public void Select(bool toggle)
@@ -141,6 +213,22 @@ public class Land : MonoBehaviour, ITimeTracker
                     {
                         cropPlanted.RemoveCrop();
                     }
+
+                    //Remove weeds obstacle
+                    if (obstacleStatus == FarmObstacleStatus.Weeds) SetObstacleStatus(FarmObstacleStatus.None);
+
+                    break;
+                case EquipmentData.ToolType.Axe:
+
+                    //Remove wood obstacle
+                    if (obstacleStatus == FarmObstacleStatus.Wood) SetObstacleStatus(FarmObstacleStatus.None);
+
+                    break;
+                case EquipmentData.ToolType.PickAxe:
+
+                    //Remove rock obstacle
+                    if (obstacleStatus == FarmObstacleStatus.Rock) SetObstacleStatus(FarmObstacleStatus.None);
+
                     break;
             }
 
@@ -151,7 +239,7 @@ public class Land : MonoBehaviour, ITimeTracker
         SeedData seedTool = toolSlot as SeedData;
 
         //Conditions to be able to plant a seed
-        if (seedTool != null && landStatus != LandStatus.Soil && cropPlanted == null)
+        if (seedTool != null && landStatus != LandStatus.Soil && cropPlanted == null && obstacleStatus == FarmObstacleStatus.None)
         {
             SpawnCrop();
             //Plant
