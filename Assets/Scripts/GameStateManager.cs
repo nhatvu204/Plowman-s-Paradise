@@ -31,6 +31,21 @@ public class GameStateManager : MonoBehaviour, ITimeTracker
 
     public void ClockUpdate(GameTimestamp timestamp)
     {
+        UpdateFarmState(timestamp);
+        UpdateShippingState(timestamp);
+    }
+
+    void UpdateShippingState(GameTimestamp timestamp)
+    {
+        //Check if the hour is here (18:00h)
+        if(timestamp.hour == ShippingBin.hourToShip && timestamp.minute == 0)
+        {
+            ShippingBin.ShipItems();
+        }
+    }
+
+    void UpdateFarmState(GameTimestamp timestamp)
+    {
         //Update the Land and Crop Save States as long as the player is outside of the Farm scene
         if (SceneTransitionManager.Instance.currentLocation != SceneTransitionManager.Location.Farm)
         {
@@ -57,7 +72,7 @@ public class GameStateManager : MonoBehaviour, ITimeTracker
                 land.ClockUpdate(timestamp);
 
                 //Update Crop's state based on the Land's state 
-                if(land.landStatus == Land.LandStatus.Watered)
+                if (land.landStatus == Land.LandStatus.Watered)
                 {
                     crop.Grow();
                 }
@@ -106,7 +121,7 @@ public class GameStateManager : MonoBehaviour, ITimeTracker
         //Time
         GameTimestamp timestamp = TimeManager.Instance.GetGameTimestamp();
 
-        return new GameSaveState(landData, cropData, toolSlots, itemSlots, equippedItemSlot, equippedToolSlot, timestamp);
+        return new GameSaveState(landData, cropData, toolSlots, itemSlots, equippedItemSlot, equippedToolSlot, timestamp, PlayerStats.Money);
     }
 
     public void LoadSave()
@@ -127,5 +142,8 @@ public class GameStateManager : MonoBehaviour, ITimeTracker
 
         //Farming data
         LandManager.farmData = new System.Tuple<List<LandSaveState>, List<CropSaveState>>(save.landData, save.cropData);
+
+        //Player stats
+        PlayerStats.LoadStats(save.money);
     }
 }

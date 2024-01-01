@@ -38,6 +38,9 @@ public class UIManager : MonoBehaviour, ITimeTracker
     [Header("Yes No Prompt")]
     public YesNoPrompt yesNoPrompt;
 
+    [Header("Player Stats")]
+    public Text moneyText;
+
     private void Awake()
     {
         //If there is more than 1 instance, destroy the extra
@@ -56,6 +59,7 @@ public class UIManager : MonoBehaviour, ITimeTracker
     {
         RenderInventory();
         AssignSlotIndexes();
+        RenderPlayerStats();
 
         //Add UIManager to the list of objects TimeManager will notify when the time updates
         TimeManager.Instance.RegisterTracker(this);
@@ -197,5 +201,9 @@ public class UIManager : MonoBehaviour, ITimeTracker
     }
     #endregion
 
-
+    //Render the UI of all player stats in HUD
+    public void RenderPlayerStats()
+    {
+        moneyText.text = PlayerStats.Money + PlayerStats.CURRENCY;
+    }
 }

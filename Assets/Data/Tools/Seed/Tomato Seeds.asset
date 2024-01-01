@@ -15,6 +15,7 @@ MonoBehaviour:
   description: Seed to grow tomatos
   thumbnail: {fileID: -1292966264, guid: e9cec09ac9be7ab458afe186f6c1edb0, type: 3}
   gameModel: {fileID: 0}
+  cost: 50
   daysToGrow: 9
   cropToYield: {fileID: 11400000, guid: 78fa6b7e709e2ae4cab669aee86c8559, type: 2}
   seedling: {fileID: 7303635794300671170, guid: 10fd5fa03c2f3574fb1b8ffa77e3eba6, type: 3}
