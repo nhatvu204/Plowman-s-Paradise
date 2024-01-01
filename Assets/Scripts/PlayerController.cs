@@ -54,13 +54,6 @@ public class PlayerController : MonoBehaviour
             //Interact
             playerInteraction.ItemInteract();
         }
-
-        //Keep item from hand
-        if (Input.GetButtonDown("Fire3"))
-        {
-            //Interact
-            playerInteraction.ItemKeep();
-        }
     }
 
     //Handles movement

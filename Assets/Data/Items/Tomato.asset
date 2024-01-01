@@ -15,4 +15,3 @@ MonoBehaviour:
   description: Technically a fruit
   thumbnail: {fileID: 1487243395, guid: b4fdc54e5be44554c934adb8e2f7e64a, type: 3}
   gameModel: {fileID: 7096940637628244092, guid: 9abcce8e6fd72054ab77cff93edb836d, type: 3}
-  cost: 150
