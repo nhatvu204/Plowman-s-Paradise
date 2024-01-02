@@ -50,8 +50,9 @@ public class InventoryManager : MonoBehaviour
         this.equippedItemSlot = equippedItemSlot;
         this.equippedToolSlot = equippedToolSlot;
 
-        //Update in the UI
+        //Update in the UI and the scene
         UIManager.Instance.RenderInventory();
+        RenderHand();
     }
 
     //Equipping
@@ -164,6 +165,34 @@ public class InventoryManager : MonoBehaviour
 
         //Can't find slot to stack
         return false;
+    }
+
+    //Handles movement of item from Shop to Inventory
+    public void ShopToInventory(ItemSlotData itemSlotToMove)
+    {
+        //The inventory array to change
+        ItemSlotData[] inventoryToAlter = IsTool(itemSlotToMove.itemData) ? toolSlots : itemSlots;
+
+        //Try stacking the hand slot
+        //Check if can't stack
+        if (!StackItemToInventory(itemSlotToMove, inventoryToAlter))
+        {
+            //Find an empty slot to put
+            //Iterate through each inventory slot and find an empty slot
+            for (int i = 0; i < inventoryToAlter.Length; i++)
+            {
+                if (inventoryToAlter[i].IsEmpty())
+                {
+                    //Send the equipped item
+                    inventoryToAlter[i] = new ItemSlotData(itemSlotToMove);
+                    break;
+                }
+            }
+        }
+
+        //Update the channges to the UI and the scene
+        UIManager.Instance.RenderInventory();
+        RenderHand();
     }
 
     //Render equipped item in the scene

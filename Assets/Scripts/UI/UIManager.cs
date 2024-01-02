@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour, ITimeTracker
 {
-    public static UIManager Instance {  get; private set; }
+    public static UIManager Instance { get; private set; }
 
     [Header("Status Bar")]
     public Image toolEquipSlot;
@@ -27,7 +27,8 @@ public class UIManager : MonoBehaviour, ITimeTracker
     public HandInventorySlot itemHandSlot;
     public InvetorySlot[] itemSlots;
 
-    //Item info box
+    [Header("Item Info Box")]
+    public GameObject itemInfoBox;
     public Text itemNameText;
     public Text itemDescriptionText;
 
@@ -37,6 +38,12 @@ public class UIManager : MonoBehaviour, ITimeTracker
 
     [Header("Yes No Prompt")]
     public YesNoPrompt yesNoPrompt;
+
+    [Header("Player Stats")]
+    public Text moneyText;
+
+    [Header("Shop")]
+    public ShopListingManager shopListingManager;
 
     private void Awake()
     {
@@ -56,9 +63,11 @@ public class UIManager : MonoBehaviour, ITimeTracker
     {
         RenderInventory();
         AssignSlotIndexes();
+        DisplayItemInfo(null);
 
         //Add UIManager to the list of objects TimeManager will notify when the time updates
         TimeManager.Instance.RegisterTracker(this);
+        RenderPlayerStats();
     }
 
     public void TriggerYesNoPrompt(string message, System.Action onYesCallback)
@@ -159,10 +168,10 @@ public class UIManager : MonoBehaviour, ITimeTracker
         {
             itemNameText.text = "";
             itemDescriptionText.text = "";
-
+            itemInfoBox.SetActive(false);
             return;
         }
-
+        itemInfoBox.SetActive(true);
         itemNameText.text = data.name;
         itemDescriptionText.text = data.description;
     }
@@ -197,5 +206,17 @@ public class UIManager : MonoBehaviour, ITimeTracker
     }
     #endregion
 
+    //Render the UI of the player stats in the HUD
+    public void RenderPlayerStats()
+    {
+        moneyText.text = PlayerStats.Money + PlayerStats.CURRENCY;
+    }
 
+    //Open the shop window with the shop item listed
+    public void OpenShop(List<ItemData> shopItems)
+    {
+        //Set active the shop window
+        shopListingManager.gameObject.SetActive(true);
+        shopListingManager.RenderShop(shopItems);
+    }
 }

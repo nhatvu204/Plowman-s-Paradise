@@ -13,5 +13,5 @@ public class ItemData : ScriptableObject
     //GameObject shown in the scene
     public GameObject gameModel;
 
-
+    public int cost;
 }
