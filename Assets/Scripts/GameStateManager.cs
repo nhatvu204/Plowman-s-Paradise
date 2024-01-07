@@ -47,6 +47,7 @@ public class GameStateManager : MonoBehaviour, ITimeTracker
         foreach(NPCRelationshipStats npc in RelationshipStats.relationships)
         {
             npc.hasTalkedToday = false;
+            npc.giftGivenToday = false;
         }
     }
 

@@ -36,6 +36,13 @@ public class PlayerController : MonoBehaviour
         Move();
 
         Interact();
+
+        //Toggle relationship panel
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            GameObject relationshipPanel = UIManager.Instance.relationshipListingManager.gameObject;
+            relationshipPanel.SetActive(!relationshipPanel.activeSelf);
+        }
     }
 
     //Handles interaction, send input to player interaction

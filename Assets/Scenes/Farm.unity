@@ -24913,7 +24913,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 961c46c519b7ee74cbfb61092a6243db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  percentageFilled: 50
+  percentageFilled: 30
 --- !u!1001 &1358912386
 PrefabInstance:
   m_ObjectHideFlags: 0
