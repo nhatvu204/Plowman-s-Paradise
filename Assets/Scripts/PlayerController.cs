@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     public float walkSpeed = 4f;
     public float runSpeed = 8f;
 
-    private float gravity = 9.81f;
+    private float gravity = 9.8f;
 
     //Player interaction component
     PlayerInteraction playerInteraction;

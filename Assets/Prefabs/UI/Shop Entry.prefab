@@ -111,8 +111,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 626.8036, y: -0.000042915}
-  m_SizeDelta: {x: 885.607, y: 70}
+  m_AnchoredPosition: {x: 614.9875, y: -0.000042915}
+  m_SizeDelta: {x: 861.975, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1616772789952429156
 CanvasRenderer:
@@ -143,12 +143,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 36
+    m_Font: {fileID: 12800000, guid: 58b647c5b2ec4184e9a07a561cdf0644, type: 3}
+    m_FontSize: 44
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
-    m_MaxSize: 40
+    m_MaxSize: 44
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -219,14 +219,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.73333335, b: 0.44705883, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -861143203771653310, guid: a56c30b1e90c63646a983c77d52c6643, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -286,8 +286,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -172.45605, y: -0.0000009533287}
-  m_SizeDelta: {x: 315.878, y: 70}
+  m_AnchoredPosition: {x: -197.78, y: -0.0000009533287}
+  m_SizeDelta: {x: 312.5, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2052165288580153918
 CanvasRenderer:
@@ -318,12 +318,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 36
+    m_Font: {fileID: 12800000, guid: 58b647c5b2ec4184e9a07a561cdf0644, type: 3}
+    m_FontSize: 44
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
-    m_MaxSize: 40
+    m_MaxSize: 44
     m_Alignment: 5
     m_AlignByGeometry: 0
     m_RichText: 1
