@@ -4637,8 +4637,8 @@ MonoBehaviour:
   itemSlots:
   - itemData: {fileID: 11400000, guid: e8bf9a2cbb336d541aa472459a0d6384, type: 2}
     quantity: 5
-  - itemData: {fileID: 0}
-    quantity: 0
+  - itemData: {fileID: 11400000, guid: 4e9b10e9acf45904d90e972099714fa2, type: 2}
+    quantity: 1
   - itemData: {fileID: 0}
     quantity: 0
   - itemData: {fileID: 0}

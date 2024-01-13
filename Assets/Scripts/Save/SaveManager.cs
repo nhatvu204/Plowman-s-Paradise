@@ -8,11 +8,13 @@ public class SaveManager : MonoBehaviour
 {
     static readonly string FILEPATH = Application.persistentDataPath + "/Save.save";
 
+    //static readonly string FILEPATH2 = Application.persistentDataPath + "/Save.json";
+
     //Save game
     public static void Save(GameSaveState save)
     {
         //string json = JsonUtility.ToJson(save);
-        //File.WriteAllText(FILEPATH, json);
+        //File.WriteAllText(FILEPATH2, json);
 
         //Save as Binary file
         using (FileStream file = File.Create(FILEPATH))

@@ -14,12 +14,13 @@ public class SceneTransitionManager : MonoBehaviour
     {
         Farm,
         PlayerHome,
-        Town
+        Town,
+        ChickenCoop
     }
     public Location currentLocation;
 
     //List of places indoor
-    static readonly Location[] indoor = { Location.PlayerHome };
+    static readonly Location[] indoor = { Location.PlayerHome, Location.ChickenCoop };
 
     //Player's transform
     Transform playerPoint;

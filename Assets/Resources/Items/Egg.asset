@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2291c4daa5fa77443a77ce0a224b6527, type: 3}
+  m_Name: Egg
+  m_EditorClassIdentifier: 
+  description: An egg
+  thumbnail: {fileID: 6820754018416556629, guid: a56c30b1e90c63646a983c77d52c6643, type: 3}
+  gameModel: {fileID: 5848019718157124638, guid: a18f1a94dc0a4134aac7675fc5cce174, type: 3}
+  cost: 100
